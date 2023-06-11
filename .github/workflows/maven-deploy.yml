@@ -4,10 +4,15 @@ on:
   push:
     branches:
       - main
-
+  pull_request:
+    branches:
+      - main
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
 
     steps:
       - name: Checkout code
@@ -25,6 +30,6 @@ jobs:
         run: mvn clean package
 
       - name: Publish to GitHub Packages
-        run: mvn deploy -Dmaven.test.skip=false
+        run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
