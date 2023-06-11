@@ -27,6 +27,6 @@ jobs:
         run: mvn clean package
 
       - name: Publish to GitHub Packages
-        run: mvn deploy -Dmaven.test.skip=false
+        run: mvn deploy -Dmaven.test.skip=true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
