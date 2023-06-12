@@ -10,10 +10,10 @@ public class App {
     public App() {}
 
     public static void main(String[] args) {
-        System.out.println(MESSAGE);
+        System.out.println(MESSAGER);
     }
 
     public String getMessage() {
-        return MESSAGE;
+        return MESSAGER;
     }
 }
